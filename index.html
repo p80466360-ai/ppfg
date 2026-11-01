@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Good Morning Keysha ❤️</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #ff759d, #ffc0d5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    overflow: hidden;
+}
+
+.card {
+    width: 90%;
+    max-width: 380px;
+    background: white;
+    padding: 30px 22px;
+    border-radius: 25px;
+    text-align: center;
+    box-shadow: 0 10px 35px #a52a5260;
+    z-index: 2;
+}
+
+.heart {
+    font-size: 65px;
+    animation: beat 1s infinite;
+}
+
+h1 {
+    color: #ff3975;
+    margin: 15px 0;
+}
+
+#pesan {
+    color: #a52a52;
+    font-size: 17px;
+    line-height: 1.8;
+    font-weight: bold;
+    min-height: 140px;
+}
+
+button {
+    background: #ff3975;
+    color: white;
+    border: none;
+    padding: 13px 35px;
+    border-radius: 25px;
+    font-size: 17px;
+    margin-top: 20px;
+    cursor: pointer;
+}
+
+button:active {
+    transform: scale(0.9);
+}
+
+.hati {
+    position: absolute;
+    top: -30px;
+    animation: turun linear forwards;
+    pointer-events: none;
+}
+
+@keyframes beat {
+    50% {
+        transform: scale(1.2);
+    }
+}
+
+@keyframes turun {
+    to {
+        transform: translateY(110vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="heart">❤️</div>
+
+    <h1>Good Morning Keysha</h1>
+
+    <p id="pesan"></p>
+
+    <button id="tombol" onclick="jawab()">
+        YA 💗
+    </button>
+
+</div>
+
+<script>
+
+// Tulisan awal
+const tulisan = `GOOD MORNING KEYSHA KU CINTA ❤️
+
+GIMANA TIDURNYA NYENYAK?
+
+KALO NYENYAK PENCET YA
+
+MORNING YA CINTA 💗`;
+
+let index = 0;
+
+function ketik() {
+    if (index < tulisan.length) {
+        document.getElementById("pesan").innerHTML +=
+        tulisan[index] === "\n" ? "<br>" : tulisan[index];
+
+        index++;
+        setTimeout(ketik, 60);
+    }
+}
+
+ketik();
+
+// Tombol YA
+function jawab() {
+
+    document.getElementById("pesan").innerHTML =
+    "YEEY ❤️🥺<br><br>SEMANGAT SEKOLAH NYA YA KEYSHA KU CINTA LOVE YOU 💗";
+
+    document.getElementById("tombol").innerHTML =
+    "LOVE YOU TO ❤️";
+
+    document.getElementById("tombol").onclick = function() {
+        document.getElementById("pesan").innerHTML =
+        "LOVE YOU MORE KEYSHA ❤️💗";
+    };
+}
+
+// Animasi hati
+function buatHati() {
+
+    const hati = document.createElement("div");
+
+    hati.className = "hati";
+
+    hati.innerHTML = ["❤️","💕","💗","💖","🌸"][
+        Math.floor(Math.random() * 5)
+    ];
+
+    hati.style.left = Math.random() * 100 + "vw";
+
+    hati.style.fontSize =
+    (15 + Math.random() * 25) + "px";
+
+    hati.style.animationDuration =
+    (3 + Math.random() * 4) + "s";
+
+    document.body.appendChild(hati);
+
+    setTimeout(() => hati.remove(), 7000);
+}
+
+setInterval(buatHati, 250);
+
+</script>
+
+</body>
+</html>
